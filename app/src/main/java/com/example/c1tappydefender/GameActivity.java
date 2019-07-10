@@ -2,7 +2,9 @@ package com.example.c1tappydefender;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.Display;
 
 public class GameActivity extends AppCompatActivity {
     private TDView gameView;
@@ -10,8 +12,11 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
         //setContentView(R.layout.activity_game);
-        gameView = new TDView(this);
+        gameView = new TDView(this, size.x, size.y);
         setContentView(gameView);
     }
 
