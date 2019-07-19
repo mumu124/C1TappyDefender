@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.KeyEvent;
 
 public class GameActivity extends AppCompatActivity {
     private TDView gameView;
@@ -30,5 +31,14 @@ public class GameActivity extends AppCompatActivity {
     protected  void onResume() {
         super.onResume();
         gameView.resume();
+    }
+
+    // If the player hits the back button, quit the app
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            finish();
+            return true;
+        }
+        return false;
     }
 }
